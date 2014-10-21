@@ -64,6 +64,7 @@ common_COPY_HEADERS := png.h pngconf.h pngusr.h
 # =====================================================
 
 include $(CLEAR_VARS)
+LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
 
 LOCAL_SRC_FILES := $(common_SRC_FILES)
 LOCAL_CFLAGS += $(common_CFLAGS)
@@ -82,6 +83,7 @@ include $(BUILD_HOST_STATIC_LIBRARY)
 # =====================================================
 
 include $(CLEAR_VARS)
+LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
 LOCAL_CLANG := true
 LOCAL_SRC_FILES := $(common_SRC_FILES)
 LOCAL_CFLAGS += $(common_CFLAGS) -ftrapv
@@ -90,6 +92,7 @@ LOCAL_ASFLAGS += $(common_ASFLAGS)
 LOCAL_SRC_FILES_arm := $(my_src_files_arm)
 LOCAL_CFLAGS_arm64 := $(my_cflags_arm64)
 LOCAL_SRC_FILES_arm64 := $(my_src_files_arm)
+LOCAL_ADDRESS_SANITIZER := false
 
 LOCAL_C_INCLUDES += $(common_C_INCLUDES) \
 	external/zlib
@@ -104,6 +107,7 @@ include $(BUILD_STATIC_LIBRARY)
 # =====================================================
 
 include $(CLEAR_VARS)
+LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
 LOCAL_CLANG := true
 LOCAL_SRC_FILES := $(common_SRC_FILES)
 LOCAL_CFLAGS += $(common_CFLAGS) -ftrapv
@@ -129,6 +133,7 @@ include $(BUILD_SHARED_LIBRARY)
 # =====================================================
 
 include $(CLEAR_VARS)
+LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
 LOCAL_CLANG := true
 LOCAL_C_INCLUDES:= $(common_C_INCLUDES) external/zlib
 LOCAL_SRC_FILES:= pngtest.c
