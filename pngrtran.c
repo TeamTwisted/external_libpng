@@ -2,7 +2,7 @@
 /* pngrtran.c - transforms the data in a row for PNG readers
  *
  * Last changed in libpng 1.6.19 [November 12, 2015]
- * Copyright (c) 1998-2015 Glenn Randers-Pehrson
+ * Copyright (c) 1998-2002,2004,2006-2015 Glenn Randers-Pehrson
  * (Version 0.96 Copyright (c) 1996, 1997 Andreas Dilger)
  * (Version 0.88 Copyright (c) 1995, 1996 Guy Eric Schalnat, Group 42, Inc.)
  *
@@ -99,7 +99,6 @@ png_rtran_ok(png_structrp png_ptr, int need_IHDR)
 {
    if (png_ptr != NULL)
    {
-#ifndef PNG_INDEX_SUPPORTED
       if ((png_ptr->flags & PNG_FLAG_ROW_INIT) != 0)
          png_app_error(png_ptr,
             "invalid after png_start_read_image or png_read_update_info");
@@ -114,9 +113,6 @@ png_rtran_ok(png_structrp png_ptr, int need_IHDR)
 
          return 1; /* Ok */
       }
-#else
-      return 1;
-#endif
    }
 
    return 0; /* no png_error possible! */
